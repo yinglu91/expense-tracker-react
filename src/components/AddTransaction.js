@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddTransaction = () => {
+  const [text, setText] = useState('');
+  const [amount, setamount] = useState(0);
+
   return (
     <>
       <div>
@@ -8,14 +11,24 @@ const AddTransaction = () => {
         <form>
           <div className='form-control'>
             <label htmlFor='text'>Text</label>
-            <input type='text' placeholder='Enter text...' />
+            <input
+              type='text'
+              value={text}
+              onChange={e => setText(e.target.value)}
+              placeholder='Enter text...'
+            />
           </div>
           <div className='form-control'>
             <label htmlFor='amount'>
               Amount <br />
               (negative - expense, positive - income)
             </label>
-            <input type='number' placeholder='Enter amount...' />
+            <input
+              type='number'
+              value={amount}
+              onChange={e => setamount(e.target.value)}
+              placeholder='Enter amount...'
+            />
           </div>
           <button className='btn'>Add transaction</button>
         </form>
